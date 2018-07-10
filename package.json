@@ -1,0 +1,26 @@
+{
+  "name": "mohican",
+  "version": "0.0.1",
+  "description": "General database managment interface",
+  "author": "o-rumiantsev",
+  "license": "MIT",
+  "main": "mohican.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/o-rumiantsev/mohican.git"
+  },
+  "keywords": [
+    "storage",
+    "dbms",
+    "mongodb",
+    "mysqk",
+    "postgresql"
+  ],
+  "bugs": {
+    "url": "https://github.com/o-rumiantsev/mohican/issues"
+  },
+  "homepage": "https://github.com/o-rumiantsev/mohican#readme"
+}
