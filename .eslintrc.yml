@@ -22,7 +22,6 @@ rules:
   block-spacing: error
   brace-style: error
   camelcase: error
-  capitalized-comments: error
   class-methods-use-this: error
   comma-spacing: error
   comma-style: error
@@ -45,7 +44,6 @@ rules:
   func-style:
     - error
     - expression
-  function-paren-newline: error
   generator-star-spacing: error
   getter-return: error
   global-require: 'off'
@@ -63,7 +61,6 @@ rules:
   jsx-quotes: error
   key-spacing: error
   keyword-spacing: error
-  line-comment-position: error
   linebreak-style:
     - error
     - unix
@@ -107,7 +104,6 @@ rules:
   no-implicit-coercion: error
   no-implicit-globals: error
   no-implied-eval: error
-  no-inline-comments: error
   no-invalid-this: error
   no-iterator: error
   no-label-var: error
