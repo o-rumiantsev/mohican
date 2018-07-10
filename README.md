@@ -1,7 +1,7 @@
 # Mohican
 Generalized database managment interface.
 
-This is a collection of independent database managment systems, united by common interface, so it does not metter whether you use mongodb or mysql.
+This is a collection of independent database managment systems, united by common interface, so it does not matter whether you use mongodb or mysql.
 
 # Example
 To use Mohican you must connect to existing database server:
