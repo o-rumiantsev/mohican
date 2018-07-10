@@ -28,7 +28,6 @@ rules:
   computed-property-spacing: error
   consistent-return: error
   consistent-this: error
-  curly: error
   default-case: error
   dot-notation: error
   eol-last: error
@@ -45,7 +44,6 @@ rules:
   generator-star-spacing: error
   getter-return: error
   global-require: 'off'
-  guard-for-in: error
   handle-callback-err: error
   id-blacklist: error
   id-length: error
@@ -70,7 +68,6 @@ rules:
   max-lines: error
   max-nested-callbacks: error
   max-params: error
-  max-statements: error
   max-statements-per-line: error
   multiline-comment-style: error
   multiline-ternary: error
@@ -84,7 +81,6 @@ rules:
   no-caller: error
   no-catch-shadow: error
   no-confusing-arrow: error
-  no-continue: error
   no-div-regex: error
   no-duplicate-imports: error
   no-else-return: error
