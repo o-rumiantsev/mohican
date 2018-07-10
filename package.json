@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/o-rumiantsev/mohican/issues"
   },
-  "homepage": "https://github.com/o-rumiantsev/mohican#readme"
+  "homepage": "https://github.com/o-rumiantsev/mohican#readme",
+  "dependencies": {
+    "mongodb": "^3.1.1"
+  }
 }
