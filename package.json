@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/o-rumiantsev/mohican#readme",
   "dependencies": {
+    "common-toolkit": "^0.1.4",
     "mongodb": "^3.1.1",
     "mysql": "^2.15.0"
   }
