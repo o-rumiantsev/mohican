@@ -68,11 +68,29 @@ const join = (data, callback) => {
     });
 };
 
+const $in = (data, callback) => {
+  sql
+    .select({
+      name: { $in: ['Aleksei', 'Diana'] },
+      category: 'test'
+    })
+    .fetch((err, res) => {
+      if (err) {
+        callback(err);
+        return;
+      }
+
+      console.log(res);
+      callback(null);
+    });
+};
+
 tools.async.sequential([
   connect,
   open,
   select,
   join,
+  $in,
   close
 ], err => {
   const equality = compareResults(...results)
