@@ -29,7 +29,7 @@ Mohican.prototype.connect = function(
 ) {
   const { protocol } = url.parse(address);
 
-  if (!protocol) {
+  if (!protocol || !(protocol in PROVIDERS)) {
     throw new Error(this.errors.ERR_NO_SUCH_PROVIDER);
   }
 
