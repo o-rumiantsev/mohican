@@ -16,38 +16,43 @@ mohican.connect(
 
 And then do anything you need:
 ```javascript
-const db = mohican.open('someDatabase');
+mc.open('someDatabase', err => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  
+  // Create something
+  mc.create(
+    entry, // object
+    callback // function, (err, entryId) => {...}
+  );
 
-// Create something
-db.create(
-  entry, // object
-  callback // function, (err, entryId) => {...}
-);
+  // Update something
+  mc.update(
+   entry, // object, update parameters
+   callback // function, err => {...}
+  );
 
-// Update something
-db.update(
-  entry, // object, update parameters
-  callback // function, err => {...}
-);
+  // Delete something
+  mc.delete(
+   id, // object, { id, category }
+   callback // function, err => {...}
+  );
 
-// Delete something
-db.delete(
-  id, // number, id of entry to delete
-  callback // function, err => {...}
-);
+  const cursor = db.select({
+    /*
+   Search mask
+   */
+  });
 
-const cursor = db.select({
-  /*
-  Search mask
-  */
-});
-
-cursor
-  .clone()
-  .map(fn1)
-  .filter(fn2)
-  .project(fn3)
-  .fetch((err, data) => {...});
+  cursor
+   .clone()
+   .map(fn1)
+   .filter(fn2)
+   .project(fn3)
+   .fetch((err, data) => {...});
+  });
 ```
 
 ## Features
