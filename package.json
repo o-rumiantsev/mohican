@@ -16,7 +16,7 @@
     "storage",
     "dbms",
     "mongodb",
-    "mysqk",
+    "mysql",
     "postgresql"
   ],
   "bugs": {
