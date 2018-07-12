@@ -43,10 +43,10 @@ Mohican.prototype.connect = function(
 
 Mohican.prototype.open = function(
   // Open database
-  database // string, name of database to open
+  database, // string, name of database to open
+  callback // function, err, db => {...}
 ) {
-  this.provider.open(database);
-  return this.provider;
+  this.provider.open(database, err => callback(err, this.provider));
 };
 
 Mohican.prototype.close = function() {
