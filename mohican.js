@@ -9,11 +9,13 @@ module.exports = Mohican;
 const url = require('url');
 const mixinErrors = require('./lib/errors.js');
 const MongoProvider = require('./lib/mongodb.provider.js');
+const MySQLProvider = require('./lib/mysql.provider.js');
 
 mixinErrors(Mohican);
 
 const PROVIDERS = {
-  mongodb: MongoProvider
+  mongodb: MongoProvider,
+  mysql: MySQLProvider
 };
 
 const getProvider = protocol => {
@@ -29,7 +31,7 @@ Mohican.prototype.connect = function(
 ) {
   const { protocol } = url.parse(address);
 
-  if (!protocol || !(protocol in PROVIDERS)) {
+  if (!protocol) {
     throw new Error(this.errors.ERR_NO_SUCH_PROVIDER);
   }
 
