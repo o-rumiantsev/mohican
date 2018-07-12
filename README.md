@@ -16,26 +16,26 @@ mohican.connect(
 
 And then do anything you need:
 ```javascript
-mc.open('someDatabase', err => {
+mc.open('someDatabase', (err, db) => {
   if (err) {
     console.error(err);
     return;
   }
-  
+
   // Create something
-  mc.create(
+  db.create(
     entry, // object
     callback // function, (err, entryId) => {...}
   );
 
   // Update something
-  mc.update(
+  db.update(
    entry, // object, update parameters
    callback // function, err => {...}
   );
 
   // Delete something
-  mc.delete(
+  db.delete(
    id, // object, { id, category }
    callback // function, err => {...}
   );
@@ -93,7 +93,7 @@ const somefieldCursor = mc
     category: 'anotherTable'
   })
   .fields(['field']);
-  
+
 mc
   .select({
     someField: somefieldCursor,
@@ -121,5 +121,3 @@ mc
   .fields(['table.field', 'anotherTable.anotherField'])
   .fetch(/* err, data - callback */);
 ```
-
-
