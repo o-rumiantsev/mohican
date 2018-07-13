@@ -69,7 +69,7 @@ const scheme = {
   id: { type: 'INT', options: ['AUTO_INCREMENT', 'PRIMARY KEY'] },
   name: { type: 'VARCHAR(255)' },
   born: { type: 'DATETIME' },
-  foreignId: { type: 'INT', options: { reference: 'anotherTable.id' } },
+  foreignId: { type: 'INT', reference: 'anotherTable.id' },
   safe: true // create if not exists
 };
 
