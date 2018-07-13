@@ -19,22 +19,22 @@ const close = (data, callback) => (
 const createTables = ({ db }, callback) => {
   const persons = {
     safe: true,
-    name: { type: 'VARCHAR(255)' },
-    born: { type: 'DATETIME' },
-    country: { type: 'VARCHAR(255)' },
+    name: 'VARCHAR(255)',
+    born: 'DATETIME',
+    country: 'VARCHAR(255)',
     category: 'person'
   };
 
   const jobs = {
     safe: true,
-    name: { type: 'VARCHAR(255)' },
+    name: 'VARCHAR(255)',
     category: 'jobs'
   };
 
   const work = {
     safe: true,
     job: { type: 'INT', reference: 'jobs.id' },
-    position: { type: 'VARCHAR(255)' },
+    position: 'VARCHAR(255)',
     workerId: { type: 'INT', reference: 'person.id' },
     category: 'work'
   };
@@ -105,7 +105,7 @@ const createEntries = ({ db }, callback) => {
 
   const createWork = (data, cb) => {
     const alexeiId = db.select({
-      name: 'Alexei',
+      name: 'Aleksei',
       category: 'person'
     }).fields(['id']);
 
@@ -177,6 +177,39 @@ const createEntries = ({ db }, callback) => {
   ], callback);
 };
 
+const select = ({ db }, callback) => {
+  const cursor = db
+    .select({
+      category: 'person'
+    })
+    .join({
+      on: 'work.workerId = person.id',
+      category: 'work'
+    })
+    .join({
+      on: 'work.job = jobs.id',
+      category: 'jobs'
+    })
+    .fields([
+      'person.id',
+      'person.name',
+      'person.born',
+      'person.country',
+      'jobs.name as job',
+      'work.position as position',
+    ]);
+
+  cursor.fetch((err, data) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    console.log(data);
+    callback(null);
+  });
+};
+
 const dropTables = ({ db }, callback) => {
   const dropWork = (d, cb) => db.drop('work', cb);
   const dropJobs = (d, cb) => db.drop('jobs', cb);
@@ -195,6 +228,7 @@ module.exports = (data, callback) => {
     open,
     createTables,
     createEntries,
+    select,
     dropTables,
     close
   ], callback);
