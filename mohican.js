@@ -7,11 +7,9 @@ const Mohican = function() {
 module.exports = Mohican;
 
 const url = require('url');
-const mixinErrors = require('./lib/errors.js');
 const MongoProvider = require('./lib/mongodb.provider.js');
 const MySQLProvider = require('./lib/mysql.provider.js');
 
-mixinErrors(Mohican);
 
 const PROVIDERS = {
   mongodb: MongoProvider,
@@ -19,10 +17,13 @@ const PROVIDERS = {
 };
 
 const getProvider = protocol => {
+  // Get provider name from URL protocol
   const start = 0;
   const end = protocol.length - 1;
   return protocol.substring(start, end);
 };
+
+Mohican.prototype.errors = require('./lib/errors.js');
 
 Mohican.prototype.connect = function(
   // Connect to existng database
@@ -50,5 +51,6 @@ Mohican.prototype.open = function(
 };
 
 Mohican.prototype.close = function() {
+  // Close database connection
   this.provider.close();
 };
