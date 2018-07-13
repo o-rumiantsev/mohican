@@ -66,11 +66,18 @@ CREATE TABLE IF NOT EXISTS table (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHA
 Will look like this:
 ```javascript
 const scheme = {
+  // id could not be passed, this is default id meta info
   id: { type: 'INT', options: ['AUTO_INCREMENT', 'PRIMARY KEY'] },
-  name: { type: 'VARCHAR(255)' },
-  born: { type: 'DATETIME' },
+
+  // specify type like string
+  name: 'VARCHAR(255)',
+  born: 'DATETIME',
+
+  // or if you need more complex definition, use object definition
   foreignId: { type: 'INT', reference: 'anotherTable.id' },
-  safe: true // create if not exists
+
+  // create if not exists
+  safe: true
 };
 
 mc.createTable(scheme, err => {
