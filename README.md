@@ -1,4 +1,8 @@
 # Mohican
+
+[![NPM Version](https://badge.fury.io/js/mohican.svg)](https://badge.fury.io/for/js/mohican)
+[![NPM Downloads](https://img.shields.io/npm/dt/mohican.svg)](https://www.npmjs.com/package/mohican)
+
 Generalized database managment interface.
 
 This is a collection of independent database managment systems, united by common interface, so it almost does not matter whether you use mongodb, mysql or postgresql.
