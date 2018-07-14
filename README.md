@@ -1,7 +1,7 @@
 # Mohican
 Generalized database managment interface.
 
-This is a collection of independent database managment systems, united by common interface, so it does not matter whether you use mongodb or mysql.
+This is a collection of independent database managment systems, united by common interface, so it almost does not matter whether you use mongodb, mysql or postgresql.
 
 # Example
 To use Mohican you must connect to existing database server:
@@ -66,8 +66,9 @@ CREATE TABLE IF NOT EXISTS table (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHA
 Will look like this:
 ```javascript
 const scheme = {
-  // id could not be passed, this is default id meta info
-  id: { type: 'INT', options: ['AUTO_INCREMENT', 'PRIMARY KEY'] },
+  // id could be skipped, this is default id meta info
+  // RECOMENDED: don`t use 'AUTO_INCREMENT' option for it
+  id: { type: 'INT', options: ['PRIMARY KEY'] },
 
   // specify type like string
   name: 'VARCHAR(255)',
@@ -128,3 +129,6 @@ mc
   .fields(['table.field', 'anotherTable.anotherField'])
   .fetch(/* err, data - callback */);
 ```
+___
+
+See [documentation](https://github.com/o-rumiantsev/mohican/blob/master/DOCS.md) for more info
