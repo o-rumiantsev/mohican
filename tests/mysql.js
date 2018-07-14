@@ -197,7 +197,8 @@ const select = ({ db }, callback) => {
       'person.country',
       'jobs.name as job',
       'work.position as position',
-    ]);
+    ])
+    .distinct();
 
   cursor.fetch((err, data) => {
     if (err) {
