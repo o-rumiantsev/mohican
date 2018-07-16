@@ -107,27 +107,27 @@ const createEntries = ({ db }, callback) => {
     const alexeiId = db.select({
       name: 'Aleksei',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const dianaId = db.select({
       name: 'Diana',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const nicitaId = db.select({
       name: 'Machendos',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const oliaId = db.select({
       name: 'O-lambda',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const jobId = db.select({
       name: 'programmer',
       category: 'jobs'
-    }).fields(['id']);
+    }).project('id');
 
     const workerAlexei = {
       job: jobId,
@@ -180,35 +180,43 @@ const createEntries = ({ db }, callback) => {
 const select = ({ db }, callback) => {
   const cursor = db
     .select({
-      category: 'person'
+      category: 'people'
     })
-    .join({
-      on: 'work.workerId = person.id',
-      category: 'work'
-    })
-    .join({
-      on: 'work.job = jobs.id',
-      category: 'jobs'
-    })
-    .fields([
-      'person.id',
-      'person.name',
-      'person.born',
-      'person.country',
-      'jobs.name as job',
-      'work.position as position',
-    ])
-    .distinct();
+    .order([['id', 'name', 'country']]);
 
-  cursor.fetch((err, data) => {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    console.log(data);
-    callback(null);
-  });
+  console.log(cursor.toSQLString());
+  callback(null);
+  // const cursor = db
+  //   .select({
+  //     category: 'person'
+  //   })
+  //   .join({
+  //     on: 'work.workerId = person.id',
+  //     category: 'work'
+  //   })
+  //   .join({
+  //     on: 'work.job = jobs.id',
+  //     category: 'jobs'
+  //   })
+  //   .fields([
+  //     'person.id',
+  //     'person.name',
+  //     'person.born',
+  //     'person.country',
+  //     'jobs.name as job',
+  //     'work.position as position',
+  //   ])
+  //   .distinct();
+  //
+  // cursor.fetch((err, data) => {
+  //   if (err) {
+  //     callback(err);
+  //     return;
+  //   }
+  //
+  //   console.log(data);
+  //   callback(null);
+  // });
 };
 
 const dropTables = ({ db }, callback) => {
