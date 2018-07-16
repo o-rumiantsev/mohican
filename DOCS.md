@@ -84,26 +84,37 @@ interface
   `Cursor.map` method adds `fn` to queue as `map` operation, it will be performed on data when `fetch` method of Cursor wiil
   be called.
 
- ## filter(fn)
-  - fn - *function*, item => {...}
-  - Returns: Cursor
-
-  Its principle is the same as `map` method one, but it adds `filter` operation to the queue.
-
  ## limit(count)
   - count - *number*, limitation count
   - Returns: Cursor
 
   Limit count of entries to fetch. Principle is the same as `filter` and `map` one.
 
- ## order(fields)
-  - fields - *array*, field to order by
+ ## project(fields)
+  - fields - *string | array*, field or fields, to project
   - Returns: Cursor
 
-  Sorts fetched data by appropriate fields.
+
+
+ ## order(fields)
+  - fields - *string | array*, field or fields to order by
+  - Returns: Cursor
+
+  Sorts fetched data by appropriate fields. You can specify sort order by wrapping descending fields into array. So this:
+  ```sql
+  SELECT * FROM TABLE ORDER BY name ASC, born DESC
+  ```
+  Can be written like this:
+  ```javascript
+  mc
+    .select({
+      category: 'table'
+    })
+    .order(['name', ['born']])
+  ```
 
  ## distinct([fields])
-  - fields - *array | string*, optional, fields to fetch
+  - fields - *string | array*, optional, fields to fetch
   - Returns: Cursor
 
   `Cursor.distinct` with no parameters tell Cursor to fetch only distinct entries with all fields. If you specify one field
