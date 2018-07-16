@@ -107,27 +107,27 @@ const createEntries = ({ db }, callback) => {
     const alexeiId = db.select({
       name: 'Aleksei',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const dianaId = db.select({
       name: 'Diana',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const nicitaId = db.select({
       name: 'Machendos',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const oliaId = db.select({
       name: 'O-lambda',
       category: 'person'
-    }).fields(['id']);
+    }).project('id');
 
     const jobId = db.select({
       name: 'programmer',
       category: 'jobs'
-    }).fields(['id']);
+    }).project('id');
 
     const workerAlexei = {
       job: jobId,
@@ -190,14 +190,15 @@ const select = ({ db }, callback) => {
       on: 'work.job = jobs.id',
       category: 'jobs'
     })
-    .fields([
+    .project([
       'person.id',
       'person.name',
       'person.born',
       'person.country',
       'jobs.name as job',
       'work.position as position',
-    ]);
+    ])
+    .distinct();
 
   cursor.fetch((err, data) => {
     if (err) {
