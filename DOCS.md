@@ -1,5 +1,5 @@
 # Documentation for Mohican
-#### Version 0.2.7
+#### Version 0.2.9
 ___
 ## Class Mohican
 Mohican instances has methods which allow you to connect to data base managment systems(DBMS), open databases and close
@@ -94,7 +94,7 @@ interface
   - fields - *string | array*, field or fields, to project
   - Returns: Cursor
 
-
+  Fetch only specified fields.
 
  ## order(fields)
   - fields - *string | array*, field or fields to order by
