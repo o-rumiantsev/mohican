@@ -53,7 +53,6 @@ mc.open('someDatabase', (err, db) => {
   cursor
    .clone()
    .map(fn1)
-   .filter(fn2)
    .project(fn3)
    .fetch((err, data) => {...});
   });
@@ -104,7 +103,7 @@ const somefieldCursor = mc
     id: 12345,
     category: 'anotherTable'
   })
-  .fields(['field']);
+  .project('field');
 
 mc
   .select({
@@ -130,7 +129,7 @@ mc
     on: 'table.id = anotherTable.id',
     category: 'anotherTable'
   })
-  .fields(['table.field', 'anotherTable.anotherField'])
+  .project(['table.field', 'anotherTable.anotherField'])
   .fetch(/* err, data - callback */);
 ```
 ___
